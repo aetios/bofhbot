@@ -4,7 +4,7 @@ import excuses
 
 
 def excuse(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text=excuses.get_excuse(), parse_mode="markdown")
+    bot.send_message(chat_id=update.message.chat_id, text=excuses.get_excuse())
 
 
 telegram_api_key = sys.argv[1]
