@@ -3,13 +3,13 @@ import collections
 
 with open("./excuses.txt") as file:
     excuses = [line.strip() for line in file.readlines()]
-last60 = collections.deque([], 60)
+next_excuse_index = len(excuses)
 
 def get_excuse():
-    while True:
-        randomnr = random.randint(0, len(excuses))
-        if randomnr not in last60:
-            last60.append(randomnr)
-            break
+    global next_excuse_index
+    if next_excuse_index >= len(excuses):
+        next_excuse_index = 0
+        random.shuffle(excuses)
 
-    return excuses[randomnr]
+    next_excuse_index += 1
+    return excuses[next_excuse_index-1]
